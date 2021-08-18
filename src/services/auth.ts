@@ -9,7 +9,7 @@ type SignInRequestData = {
 };
 
 const delay = (amount = 750) =>
-  new Promise((resolver) => setTimeout(resolver, amount));
+  new Promise((resolve) => setTimeout(resolve, amount));
 
 export async function signInRequest(data: SignInRequestData) {
   await delay();
@@ -19,6 +19,19 @@ export async function signInRequest(data: SignInRequestData) {
     // here we return the token and the non-sensible user infos
 
     token: uuid(),
+    user: {
+      name: "Caio Oliveira",
+      email: "caio@gmail.com",
+      avatar_url:
+        "https://pbs.twimg.com/profile_images/1426194645193736197/q99cuZX4_400x400.jpg",
+    },
+  };
+}
+
+export async function recoverUserInformation() {
+  await delay();
+
+  return {
     user: {
       name: "Caio Oliveira",
       email: "caio@gmail.com",

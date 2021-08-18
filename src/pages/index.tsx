@@ -2,12 +2,16 @@
 import Head from "next/head";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Home() {
   const { register, handleSubmit } = useForm();
+  const { signIn } = useContext(AuthContext);
 
-  function handleSignIn(data) {
-    console.log(data);
+  async function handleSignIn(data) {
+    await signIn(data);
+    // is a good idea to send a message if something goes wrong
   }
 
   return (
@@ -61,6 +65,7 @@ export default function Home() {
               />
             </div>
           </div>
+
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
@@ -86,6 +91,7 @@ export default function Home() {
               </a>
             </div>
           </div>
+
           <div>
             <button
               type="submit"
